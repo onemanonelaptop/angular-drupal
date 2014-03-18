@@ -1,0 +1,54 @@
+
+<!--
+<div id="menu">
+  <div class="list category" ng-repeat="section in menu"  >
+    <div class="item" ng-click='showThisCategory = !showThisCategory'>
+      {{section.title}}
+    </div>
+    <div class="list" ng-if="showThisCategory" ng-repeat="item in section.items">
+      <div class="item" ng-click='showThisItem = !showThisItem'>
+        {{item.title}}
+      </div>
+      <div class="list" ng-if="showThisItem"  ng-repeat="variation in item.variations">
+         <div class="item" >
+           {{variation.name}}
+         </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+ <ion-view title="'Menu'">
+ <ion-content class="has-header">
+<div id="menu" class="list">
+  <div class="category" ng-repeat-start="section in menu"  >
+      <a class="item item-icon-right" ng-click='showThisCategory = !showThisCategory'>
+      {{section.title}}
+      <i ng-class="{'icon ion-chevron-down': showThisCategory, 'icon ion-chevron-right': !showThisCategory}"></i>
+      </a>
+  </div>
+  <div  ng-repeat-end ng-if="showThisCategory">
+    <div ng-repeat-start="item in section.items">
+      <a class="item"  ng-click='showThisItem = !showThisItem'>
+        <div ng-show="item.variations.length > 1" class="item-note">
+          from whatever
+        </div>
+        <div ng-show="item.variations.length = 1" class="item-note">
+          £5.88
+        </div>
+        <div>{{item.title}}</div>
+        <div>{{item.description}}</div>
+      </a>
+    </div>
+    <div  ng-repeat-end ng-if="showThisItem">
+      <div ng-repeat="variation in item.variations">
+         <div class="item" >
+           {{variation.name}}
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ion-content>
+</ion-view>
+
+
